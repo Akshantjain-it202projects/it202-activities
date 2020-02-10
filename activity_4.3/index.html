@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS DOM Manipulation</title>
+    </head>
+    <script>
+        let apiEndpoint = "https://data.cityofchicago.org/resource/xzkq-xp2w.json?$LIMIT=5";
+        fetch(apiEndpoint)
+        .then(response=> {return response.json()})
+        .then(json => {
+            console.log(json);
+            for (var i = 0; i<json.length; i++)    {
+                var obj = json[i];
+                console.log(obj);
+                
+                var p = document.createElement("p");
+                p.textContent = obj.name + " | " + obj.department;
+                document.body.append(p);
+            }    
+        })
+        .catch(err => alert(err))
+    </script>
+    <body>
+          <div class="card template" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+         </div>
+    </body>
+</html>
