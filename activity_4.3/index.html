@@ -2,9 +2,11 @@
 <html>
     <head>
         <title>JS DOM Manipulation</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <script>
-        let apiEndpoint = "https://data.cityofchicago.org/resource/xzkq-xp2w.json?$LIMIT=5";
+        let apiEndpoint = "https://data.cityofchicago.org/resource/xzkq-xp2w.json?$LIMIT=100";
         fetch(apiEndpoint)
         .then(response=> {return response.json()})
         .then(json => {
@@ -16,12 +18,19 @@
                 var p = document.createElement("p");
                 p.textContent = obj.name + " | " + obj.department;
                 document.body.append(p);
+
+                var card = document.getElementsByClassName("template")[0];
+                var card_copy = card.cloneNode(true);
+                card_copy.getElementsByClassName("card-title")[0].textContent = obj.name;
+                card_copy.getElementsByClassName("card-subtitle")[0].textContent = obj.department;
+                card_copy.getElementsByClassName("card-text")[0].textContent = obj.annual_salary;
+                document.body.append(card_copy);
             }    
         })
         .catch(err => alert(err))
     </script>
     <body>
-          <div class="card template" style="width: 18rem;">
+          <div class="card template mt-0 mb-5" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
