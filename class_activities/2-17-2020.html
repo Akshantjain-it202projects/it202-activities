@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+    <script>
+        //
+        // Declare Database
+        //
+        var db = new Dexie("FriendDatabase");
+        db.version(1).stores({
+            friends: "++id,name,age"
+        });
+
+        //
+        // Manipulate and Query Database
+        //
+        db.friends.add({ name: "Josephine", age: 21, hometown: "NY" })
+
+        db.friends.where('age').equals(21).toArray()
+            .then (data => console.log(data))
+    </script>
+</head>
+
+</html>
