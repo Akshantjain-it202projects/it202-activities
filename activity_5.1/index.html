@@ -24,6 +24,9 @@
             para2.textContent = obj.explanation;
             document.body.append(para2);
             
+            var img = document.createElement("img");
+            img.src = obj.hdurl;
+            document.body.append(img);
             
         })
         .catch(err => alert(err))
