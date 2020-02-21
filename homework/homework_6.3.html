@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <canvas id="demo"  width="400" height="400">
+    </canvas>
+
+    <script>
+        let canv = document.getElementById("#demo");
+        // can.style.backgroundColor = "aqua"; 
+        let can1 = canv.getContext("2d");
+
+        let player = {x:100, y:100};
+        const draw = () =>  {
+            can1.clearRect(0, 0, can.width, can.width);
+            player["X"] += 1;
+
+            // if (player["X"] >= )
+
+            can1.beginPath();
+            can1.arc(player["X"], 100, 50, 0, Math.PI*2);
+            can1.closePath();
+            // can1.fillStyle() = "blue";
+            can1.fill();
+
+            window.requestAnimationFrame(draw);
+        }
+
+        draw();
+
+    </script>
+</body>
+</html>
