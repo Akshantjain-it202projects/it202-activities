@@ -8,27 +8,37 @@
     </canvas>
 
     <script>
-        let canv = document.getElementById("#demo");
-        // can.style.backgroundColor = "aqua"; 
+        let canv = document.getElementById("demo");
+        canv.style.backgroundColor = "yellow"; 
         let can1 = canv.getContext("2d");
 
-        let player = {x:100, y:100};
         const draw = () =>  {
-            can1.clearRect(0, 0, can.width, can.width);
-            player["X"] += 1;
-
-            // if (player["X"] >= )
+            can1.strokeStyle = "red";
 
             can1.beginPath();
-            can1.arc(player["X"], 100, 50, 0, Math.PI*2);
-            can1.closePath();
-            // can1.fillStyle() = "blue";
-            can1.fill();
 
-            window.requestAnimationFrame(draw);
+            can1.moveTo(0, 400);
+            can1.lineTo(200 , 0);
+            can1.lineTo(400, 400);
+            can1.moveTo(300, 200);
+            can1.lineTo(100, 200);
+
+            can1.stroke();
+            can1.closePath();
         }
 
+        const draw2 = () => {
+            can1.fillStyle = "blue";
+            // can1.moveTo(0, 0);
+            can1.fillRect(5, 5, 50, 100);
+        }
+
+        const draw3 = () => {
+            can1.fillText("667551823", 180, 400);
+        }
         draw();
+        draw2();
+        draw3();
 
     </script>
 </body>
