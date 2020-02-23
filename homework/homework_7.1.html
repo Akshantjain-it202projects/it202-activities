@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Canvas with collisions and Keyboard Events</title>
+</head>
+
+<body>
+    <canvas id="demo" width="400" height="400" style="border:1px solid #d3d3d3;">
+    </canvas>
+
+    <script>
+        let canv = document.getElementById("demo");
+        canv.style.backgroundColor = "aqua"; 
+        let can1 = canv.getContext("2d");
+
+        // location of the circles
+        let player1 = { x: 100, y: 100 , radius: 50};
+        let player2 = {x: 90, y: 140, radius: 50};
+
+        // KeyBoard Event implementation
+        document.onkeydown = function (e) {
+            switch (e.keyCode) {
+                case 37:
+                    player2["x"] -= 6;
+                    break;
+                case 38:
+                    player2["y"] -= 6;
+                    break;
+                case 39:
+                    player2["x"] += 6;
+                    break;
+                case 40:
+                    player2["y"] += 6;
+                    break;
+            }
+
+            // Edge conditions
+            if (player2["x"] >= canv.width + player2["radius"]) {
+                player2["x"] = -player2["radius"];
+            }
+
+            if (player2["x"] <= - player2["radius"]) {
+                player2["x"] = canv.width + player2["radius"];
+            }
+
+            if (player2["y"] >= canv.height + player2["radius"]) {
+                player2["y"] = -player2["radius"];
+            }
+
+            if (player2["y"] <= - player2["radius"]) {
+                player2["y"] = canv.height + player2["radius"];
+            }
+        };
+
+        // circle animation
+        const draw = () => {
+            var current_distance = Math.sqrt(Math.pow(player1["x"] - player2["x"], 2) + Math.pow(player1["y"] - player2["y"], 2));
+            var min_distance = player1.radius + player2.radius;
+
+            can1.clearRect(0, 0, canv.width, canv.height);
+
+            player1["y"] -= 1;
+            player1["x"] -= 1;
+ 
+            // Edge Conditions
+            if (player1["x"] >= canv.width + player1["radius"] ) {
+                player1["x"] = -player1["radius"];
+            }
+
+            if (player1["x"] <=  - player1["radius"]) {
+                player1["x"] = canv.width + player1["radius"];
+            }
+
+            if (player1["y"] >= canv.height + player1["radius"]   )   {
+                player1["y"] = -player1["radius"]
+            }
+
+            if (player1["y"] <= - player1["radius"]) {
+                player1["y"] = canv.height + player1["radius"]
+            }
+
+            can1.beginPath();
+            can1.arc(player1["x"], player1["y"], 50, 0, 2 * Math.PI);
+
+            if ( current_distance <= min_distance )    {
+                can1.fillStyle = "red";
+            }
+            else    {
+                can1.fillStyle = "green";
+            }
+            
+            can1.fill();
+            can1.closePath();
+
+            can1.beginPath();
+            can1.arc(player2["x"], player2["y"], 50, 0, 2 * Math.PI);
+            can1.fillStyle = "blue";
+            can1.fill();
+            can1.closePath();
+
+            window.requestAnimationFrame(draw);
+        }
+
+        draw();
+
+    </script>
+</body>
+
+</html>
