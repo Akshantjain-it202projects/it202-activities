@@ -19,7 +19,8 @@
         let player2 = {x: 90, y: 140, radius: 50};
 
         // KeyBoard Event implementation
-        document.onkeydown = function (e) {
+        document.addEventListener("keydown", (e) => {
+            console.log(e);
             switch (e.keyCode) {
                 case 37:
                     player2["x"] -= 6;
@@ -51,7 +52,7 @@
             if (player2["y"] <= - player2["radius"]) {
                 player2["y"] = canv.height + player2["radius"];
             }
-        };
+        });
 
         // circle animation
         const draw = () => {
