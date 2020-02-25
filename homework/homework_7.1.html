@@ -15,8 +15,8 @@
         let can1 = canv.getContext("2d");
 
         // location of the circles
-        let player1 = { x: 100, y: 100 , radius: 50};
-        let player2 = {x: 90, y: 140, radius: 50};
+        let player1 = { x: 100, y: 100 , radius: 10};
+        let player2 = {x: 90, y: 140, radius: 30};
 
         // KeyBoard Event implementation
         document.addEventListener("keydown", (e) => {
@@ -82,7 +82,7 @@
             }
 
             can1.beginPath();
-            can1.arc(player1["x"], player1["y"], 50, 0, 2 * Math.PI);
+            can1.arc(player1["x"], player1["y"], player1["radius"], 0, 2 * Math.PI);
 
             if ( current_distance <= min_distance )    {
                 can1.fillStyle = "red";
@@ -95,7 +95,7 @@
             can1.closePath();
 
             can1.beginPath();
-            can1.arc(player2["x"], player2["y"], 50, 0, 2 * Math.PI);
+            can1.arc(player2["x"], player2["y"], player2["radius"], 0, 2 * Math.PI);
             can1.fillStyle = "blue";
             can1.fill();
             can1.closePath();
