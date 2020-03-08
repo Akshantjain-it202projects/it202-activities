@@ -13,21 +13,40 @@ let inspection_data = [{ "inspection_id": "2363101", "dba_name": "A & S FOOD", "
 
 // console.log(inspection_data);
 
-const print = () => {
-    for (let i = 0; i < inspection_data.length; ++i) {
-        var obj = inspection_data[i];
-        console.log(obj);
+var map;
+var loc;
 
-        function initMap() {
-            // The location of Uluru
-            var loc = { lat: obj.latitude, lng: obj.longitude };
-            // The map, centered at Uluru
-            var map = new google.maps.Map(
-                document.getElementById('map'), { zoom: 5, center: loc });
-            // The marker, positioned at Uluru
-            var marker = new google.maps.Marker({ position: loc, map: map });
-        }
+function initMap() {
+    loc = {lat: parseFloat(inspection_data[0].latitude), lng: parseFloat(inspection_data[0].longitude)};
 
-        setInterval(print, 2000);
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 9, center: loc, mapTypeId: 'terrain'
+    });
+
+    var infoWindow = new google.maps.InfoWindow();
+
+    for (let i=0; i<inspection_data.length; ++i)    {
+        let obj = inspection_data[i];
+        var latLng = new google.maps.LatLng(this.parseFloat(obj.latitude), this.parseFloat(obj.longitude));
+        
+            
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            title: obj.aka_name
+        });
+
+        (function (marker, obj) {
+            google.maps.event.addListener(marker, "click", function (e) {
+                var content = '<h4>' + obj.dba_name + '</h4>' +
+                    '<p><b>Facility Type</b>: ' + obj.facility_type + '</p>' +
+                    '<p><b>Address</b>: ' + obj.address + '</p>' +
+                    '<p><b>Inspection Date</b>: ' + obj.inspection_date.split("T", 1) + '</p>' +
+                    '<p><b>Result</b>: ' + obj.results + '</p>';
+                infoWindow.setContent(content);
+                infoWindow.open(map, marker);
+            });
+        })(marker, obj);
+
     }
 }
