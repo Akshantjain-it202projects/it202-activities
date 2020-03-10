@@ -6,9 +6,9 @@
         <script src ="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
-    <body>
+    <body  style="margin: 0;">
 
-        <header class=" mdc-top-app-bar mdc-top-app-bar--fixed">
+        <header class=" mdc-top-app-bar">
             <div class="mdc-top-app-bar__row">
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                     <button
@@ -24,11 +24,13 @@
                 </section>
             </div>
         </header>
-
-        <button class="mdc-button foo-button mdc-button--raised">
-            <div class="mdc-button__ripple"></div>
-            <span class="mdc-button__label">Button</span>
-        </button>
+        <main class=" mdc-top-app-bar--fixed-adjust">
+            <button class="mdc-button foo-button mdc-button--raised">
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">Button</span>
+            </button>
+        </main>
+        
         <script>
         </script>
 
