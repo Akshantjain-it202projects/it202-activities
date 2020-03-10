@@ -32,8 +32,8 @@
         <header class=" mdc-top-app-bar" style="background-color: green;">
             <div class="mdc-top-app-bar__row">
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                    <button
-                        class="mdc-icon-button material-icons mdc-top-app-bar__navigation-icon--unbounded">menu</button><span
+                    <button 
+                        class="mdc-icon-button material-icons mdc-top-app-bar__navigation-icon--unbounded toggle-drawer">menu</button><span
                         class="mdc-top-app-bar__title">Akshant Jain</span> </section>
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
                     <button class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
@@ -55,8 +55,18 @@
         
         <script>
 
+            mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
             const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
             const listEl = document.querySelector('.mdc-drawer .mdc-list');
+
+            // drawer.open = true;
+
+            let button = document.querySelector(".toggle-drawer");
+            button.addEventListener('click', (event) => {
+                if (drawer.open)    drawer.open = false;
+                else if (!drawer.open) drawer.open = true;
+            })
+
 
         </script>
 
