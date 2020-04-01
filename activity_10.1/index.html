@@ -12,10 +12,7 @@
                     aria-describedby="my-dialog-content">
                     <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
                     <h2 class="mdc-dialog__title" id="my-dialog-title">
-                        <!--
-             -->Dialog Title
-                        <!--
-           -->
+                        Dialog Title
                     </h2>
                     <div class="mdc-dialog__content" id="my-dialog-content">
                         Dialog body text goes here.
@@ -35,9 +32,17 @@
             <div class="mdc-dialog__scrim"></div>
         </div>
 
+        <button class="mdc-button" onclick="func()">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">Button</span>
+        </button>
+
         <script>
-            const dialog = new mdc.dialog.MDCDialog(document.querySelector('.mdc-dialog'));
-            dialog.open();
+            const dialog = new mdc.dialog.MDCDialog(document.querySelector('.mdc-dialog'));            
+            function func() {
+               dialog.open(); 
+            }
+
         </script>
     </body>
 </html>
