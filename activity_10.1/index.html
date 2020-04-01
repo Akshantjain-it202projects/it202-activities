@@ -6,6 +6,12 @@
             <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
         </head>
     <body>
+
+        <button class="mdc-button">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">Button</span>
+        </button>
+
         <div class="mdc-dialog">
             <div class="mdc-dialog__container">
                 <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
@@ -32,16 +38,12 @@
             <div class="mdc-dialog__scrim"></div>
         </div>
 
-        <button class="mdc-button" onclick="func()">
-            <div class="mdc-button__ripple"></div>
-            <span class="mdc-button__label">Button</span>
-        </button>
-
         <script>
-            const dialog = new mdc.dialog.MDCDialog(document.querySelector('.mdc-dialog'));            
-            function func() {
-               dialog.open(); 
-            }
+            const dialog = new mdc.dialog.MDCDialog(document.querySelector('.mdc-dialog'));
+            
+            document.querySelector('.mdc-button').addEventListener("click", (e) => {
+                dialog.open();
+            });
 
         </script>
     </body>
